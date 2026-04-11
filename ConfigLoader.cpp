@@ -87,15 +87,23 @@ void ConfigLoader::deleteSpaces(std::string &line)
 
 std::any ConfigLoader::parseValue(const std::string &value)
 {
-    // Try int
-    try { return std::stoi(value); } catch (...) {}
-
-    // Try double
-    try { return std::stod(value); } catch (...) {}
-
     // Try bool
     if (value == "true") return true;
     if (value == "false") return false;
+
+    // Try int64_t
+    try {
+        size_t pos;
+        int64_t i = std::stoll(value, &pos);
+        if (pos == value.size()) return i;
+    } catch (...) {}
+
+    // Try double
+    try {
+        size_t pos;
+        double d = std::stod(value, &pos);
+        if (pos == value.size()) return d;
+    } catch (...) {}
 
     return value;
 
