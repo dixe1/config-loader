@@ -1,0 +1,76 @@
+# ConfigLoader
+
+A simple C++23 library for loading configuration files in a key-value format.
+
+## Requirements
+
+- CMake 3.20 or newer
+- Compiler with C++23 support
+
+## Building
+
+```bash
+mkdir build && cd build
+cmake ..
+cmake --build .
+```
+
+The library will be built as a static library (`ConfigLoader.a` / `ConfigLoader.lib`).
+
+## Config File Format
+
+```ini
+# This is a comment
+name = John
+age = 21
+temperature = 36.6
+debug = true
+path = /home/user/data   # inline comments work too
+```
+
+**Rules:**
+- Comments start with `#`
+- Key-value separator is `=`
+- Whitespace around keys and values is ignored
+- Supported types: `int`, `double`, `bool`, `string`
+
+## Usage
+
+### Load a file and retrieve values
+
+```cpp
+#include "ConfigLoader.h"
+
+int main()
+{
+    ConfigLoader cfg("config.ini");
+
+    int age        = cfg.get<int>("age");
+    double temp    = cfg.get<double>("temperature");
+    bool debug     = cfg.get<bool>("debug");
+    std::string s  = cfg.get<std::string>("name");
+}
+```
+
+### Static load into a map
+
+```cpp
+auto config = ConfigLoader::load("config.ini");
+```
+
+Returns `std::unordered_map<std::string, std::any>`.
+
+## API
+
+| Method | Description |
+|--------|-------------|
+| `ConfigLoader(const std::string& filePath)` | Constructor – loads the config file |
+| `std::any getValue(const std::string& key)` | Returns the value for a key as `std::any` |
+| `T get<T>(const std::string& key)` | Returns the value cast to type `T` |
+| `static load(const std::string& filePath)` | Loads the file and returns a config map |
+
+## Error Handling
+
+- If the file does not exist, `load()` prints an error to `stderr` and returns an empty map.
+- If the key does not exist, `getValue()` prints a message and returns an empty `std::any`.
+- `get<T>()` will throw `std::bad_any_cast` if the type does not match — wrap it in a `try/catch`.
