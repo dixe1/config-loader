@@ -64,10 +64,10 @@ Returns `std::unordered_map<std::string, std::any>`.
 
 | Method | Description |
 |--------|-------------|
-| `ConfigLoader(const std::string& filePath)` | Constructor – loads the config file |
-| `std::any getValue(const std::string& key)` | Returns the value for a key as `std::any` |
-| `T get<T>(const std::string& key)` | Returns the value cast to type `T` |
-| `static load(const std::string& filePath)` | Loads the file and returns a config map |
+| `ConfigLoader(filePath)` | Constructor – loads the config file |
+| `getValue(key)` | Returns the value for a key as `std::any` |
+| `get<T>(key)` | Returns the value cast to type `T` |
+| `load(filePath)` | Static – loads the file and returns a config map |
 
 ## Error Handling
 
