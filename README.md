@@ -32,7 +32,7 @@ path = /home/user/data   # inline comments work too
 - Comments start with `#`
 - Key-value separator is `=`
 - Whitespace around keys and values is ignored
-- Supported types: `int`, `double`, `bool`, `string`
+- Supported types: `long long`, `double`, `bool`, `string`
 
 ## Usage
 
@@ -45,7 +45,7 @@ int main()
 {
     ConfigLoader cfg("config.ini");
 
-    int age        = cfg.get<int>("age");
+    long long age  = cfg.get<long long>("age");
     double temp    = cfg.get<double>("temperature");
     bool debug     = cfg.get<bool>("debug");
     std::string s  = cfg.get<std::string>("name");
