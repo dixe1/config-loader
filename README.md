@@ -36,7 +36,7 @@ path = /home/user/data   # inline comments work too
 
 ## Usage
 
-### Load a file and retrieve values
+### **Using constructor:**
 
 ```cpp
 #include "ConfigLoader.h"
@@ -52,7 +52,7 @@ int main()
 }
 ```
 
-### Static load into a map
+### **Using static `load()`:**
 
 ```cpp
 auto config = ConfigLoader::load("config.ini");
