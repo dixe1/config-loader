@@ -74,3 +74,26 @@ Returns `std::unordered_map<std::string, std::any>`.
 - If the file does not exist, `load()` prints an error to `stderr` and returns an empty map.
 - If the key does not exist, `getValue()` prints a message and returns an empty `std::any`.
 - `get<T>()` will throw `std::bad_any_cast` if the type does not match — wrap it in a `try/catch`.
+
+### Validating the loaded config
+
+**Using constructor:**
+```cpp
+ConfigLoader cfg("config.ini");
+
+if (cfg.getConfig().empty())
+{
+    // handle error
+}
+```
+
+**Using static `load()`:**
+```cpp
+auto config = ConfigLoader::load("config.ini");
+
+// load() returns an empty map if the file was not found
+if (config.empty())
+{
+    // handle error
+}
+```
