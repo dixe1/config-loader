@@ -91,10 +91,10 @@ std::any ConfigLoader::parseValue(const std::string &value)
     if (value == "true") return true;
     if (value == "false") return false;
 
-    // Try int64_t
+    // Try long long
     try {
         size_t pos;
-        int64_t i = std::stoll(value, &pos);
+        long long i = std::stoll(value, &pos);
         if (pos == value.size()) return i;
     } catch (...) {}
 
