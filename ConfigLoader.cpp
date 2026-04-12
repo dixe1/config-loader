@@ -127,3 +127,8 @@ std::any ConfigLoader::getValue(const std::string &key)
         return {};
     }
 }
+
+const std::unordered_map<std::string, std::any> & ConfigLoader::getConfig()
+{
+    return config;
+}

@@ -16,6 +16,7 @@ public:
     }
 
     std::any getValue(const std::string& key);
+    const std::unordered_map<std::string, std::any>& getConfig();
 
     template<typename T>
     T get(const std::string &key)
