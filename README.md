@@ -68,6 +68,7 @@ Returns `std::unordered_map<std::string, std::any>`.
 | `getValue(key)` | Returns the value for a key as `std::any` |
 | `get<T>(key)` | Returns the value cast to type `T` |
 | `load(filePath)` | Static – loads the file and returns a config map |
+| `getConfig()` | Returns the internal config map as `const` reference |
 
 ## Error Handling
 
