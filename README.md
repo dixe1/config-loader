@@ -36,7 +36,7 @@ path = /home/user/data   # inline comments work too
 
 ## Usage
 
-### **Using constructor:**
+### Using constructor:
 
 ```cpp
 #include "ConfigLoader.h"
@@ -52,7 +52,7 @@ int main()
 }
 ```
 
-### **Using static `load()`:**
+### Using static `load()`:
 
 ```cpp
 auto config = ConfigLoader::load("config.ini");
